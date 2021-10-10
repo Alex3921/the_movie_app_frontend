@@ -16,11 +16,36 @@ class TmdbApi {
 
   render(movies) {
     movies.forEach((movie) => {
-      const img = document.createElement('img')
-      img.src = TmdbApi.imgPath + movie.poster_path
+      const { poster_path, title, vote_average } = movie
 
-      document.body.appendChild(img)
+      const main = document.querySelector('main')
+      const movieEl = document.createElement('div')
+      movieEl.classList.add('movie')
+
+      movieEl.innerHTML = `  
+        <img 
+          src="${TmdbApi.imgPath + poster_path}" 
+          alt="${title}"
+        >
+        <div class="movie-info">
+            <h3>${title}</h3>
+            <span class="${this.getClassByRate(vote_average)}">
+              ${vote_average}
+            </span>
+        </div>
+      `
+      main.appendChild(movieEl)
     })
-     
   }
+
+  getClassByRate(vote) {
+    if(vote > 8) {
+      return 'green'
+    } else if(vote >= 5) {
+      return 'orange'
+    } else {
+      return 'red'
+    }
+  }
+
 }
