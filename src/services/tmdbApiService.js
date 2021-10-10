@@ -1,11 +1,9 @@
 class TmdbApiService {
-  constructor(port) {
-    this.port = port
+  constructor() {
+    this.baseUrl = 'http://localhost:3000/api/v1/tmdb_api'
   }
 
   getMovies() {
-    fetch(this.port + '/tmdb_api')
-    .then(response => response.json())
-    .then(data => console.log(data))
+    return fetch(this.baseUrl).then(resp => resp.json())
   }
 }
