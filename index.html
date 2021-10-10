@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <main>
+            <div class="movie">
+                <img src="https://image.tmdb.org/t/p/w1280/TnOeov4w0sTtV2gqICqIxVi74V.jpg" alt="">
+                <div class="movie-info">
+                    <h3>Movie title</h3>
+                    <span>8.4</span>
+                </div>
+            </div>
+        </main>
+        
+        <script src="src/components/tmdb_api.js"></script>
+        <script src="src/services/tmdbApiService.js"></script>
+        <script src="src/components/movie.js"></script>
+        <script src="src/services/movieService.js"></script>
+        <script src="src/components/review.js"></script>
+        <script src="src/services/reviewService.js"></script>
+        <script src="src/index.js"></script>
+    </body>
 </html>
