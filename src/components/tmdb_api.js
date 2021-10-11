@@ -1,29 +1,36 @@
 class TmdbApi {
-  static imgPath = 'https://image.tmdb.org/t/p/w1280'
+  static imgPath = "https://image.tmdb.org/t/p/w1280";
 
   constructor() {
-    this.service = new TmdbApiService()
-    this.fetchAndRenderMovies()
+    this.service = new TmdbApiService();
+    this.fetchAndRenderMovies();
   }
 
-  fetchAndRenderMovies() {
-    this.service
-      .getMovies()
-      .then(movies => {
-        this.render(movies.results)
-      })
+  fetchAndRenderMovies(query = '') {
+    if (query.length === 0) {
+      this.service.getMovies().then((movies) => {
+        this.showMovies(movies.results);
+      });
+    } else {
+      this.service.searchMovies(query).then((movies) => {
+        this.showMovies(movies.results);
+      });
+    }
   }
 
-  render(movies) {
+  showMovies(movies) {
+    // clear DOM
+    const main = document.querySelector("main");
+    main.innerHTML = "";
+
     movies.forEach((movie) => {
-      const { poster_path, title, vote_average } = movie
+      const { poster_path, title, vote_average } = movie;
 
-      const main = document.querySelector('main')
-      const movieEl = document.createElement('div')
-      movieEl.classList.add('movie')
+      const movieEl = document.createElement("div");
+      movieEl.classList.add("movie");
 
       movieEl.innerHTML = `  
-        <img 
+        <img
           src="${TmdbApi.imgPath + poster_path}" 
           alt="${title}"
         >
@@ -33,19 +40,18 @@ class TmdbApi {
               ${vote_average}
             </span>
         </div>
-      `
-      main.appendChild(movieEl)
-    })
+      `;
+      main.appendChild(movieEl);
+    });
   }
 
   getClassByRate(vote) {
-    if(vote > 8) {
-      return 'green'
-    } else if(vote >= 5) {
-      return 'orange'
+    if (vote > 8) {
+      return "green";
+    } else if (vote >= 5) {
+      return "orange";
     } else {
-      return 'red'
+      return "red";
     }
   }
-
 }
