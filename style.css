@@ -41,47 +41,59 @@ main {
   flex-wrap: wrap;
 }
 
-.movie {
+.movie-card {
   background-color: #373b69;
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   margin: 1rem;
   width: 300px;
+  position: relative;
+  transition: all 0.3s ease-out;
+  background: radial-gradient(#111 50%, #000 100%);
 }
 
-.movie img {
+.movie-card .options {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4.5rem 4.5rem;
   width: 100%;
+  max-height: 100%;
 }
 
-.movie-info {
-  color: #eee;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem 1rem;
-  letter-spacing: 0.5px;
+.movie-card img {
+  width: 100%;
+  height: 103%;
+  transform: scale(1);
+  transition: all 0.3s ease-out;
 }
 
-.movie-info h3 {
-  margin: 0;
+.movie-card:hover img {
+  transform: scale(1.2) ;
+  opacity: 0.4;
 }
 
-.movie-info span {
-  background-color: #22254b;
+.movie-card .options button {
+  color: #fff;
+  background: #2ea6e7;
+  padding: 10px 25px;
+  border-radius: 12px;
+  text-decoration: none;
   font-weight: bold;
-  border-radius: 3px;
-  padding: 0.25rem 0.5rem;
+  width: 10rem;
+  border-width: 0;
+  letter-spacing: 0.5px;
+  margin: 0 0 20px;
+  opacity: 0;
+  font-family: inherit;
 }
 
-.movie-info span.green {
-  color: rgb(20, 204, 20);
+.movie-card:hover .options button {
+  opacity: 1;
 }
 
-.movie-info span.orange {
-  color: yellow;
-}
-
-.movie-info span.red {
-  color: red;
+.movie-card .options button:hover {
+  background: #0a83c5;
 }
