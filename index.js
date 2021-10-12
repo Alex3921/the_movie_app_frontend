@@ -1,4 +1,4 @@
-const movies = new TmdbApi();
+const movies = new Movie();
 const searchForm = document.getElementById('search-form')
 const search = document.getElementById('search')
 
