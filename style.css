@@ -17,6 +17,14 @@ header {
   padding: 1rem;
 }
 
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+/* ====================== Search Box ====================== */
+
 .search {
   background-color: transparent;
   border: 2px solid #22254b;
@@ -36,10 +44,8 @@ header {
   outline: none;
 }
 
-main {
-  display: flex;
-  flex-wrap: wrap;
-}
+
+/* ====================== Movie Card ====================== */
 
 .movie-card {
   background-color: #373b69;
@@ -71,13 +77,13 @@ main {
 }
 
 .movie-card:hover img {
-  transform: scale(1.2) ;
+  transform: scale(1.2);
   opacity: 0.4;
 }
 
 .movie-card .options button {
-  color: #fff;
-  background: #2ea6e7;
+  color: black;
+  background: #2abae6;
   padding: 10px 25px;
   border-radius: 12px;
   text-decoration: none;
@@ -96,4 +102,196 @@ main {
 
 .movie-card .options button:hover {
   background: #0a83c5;
+  cursor: pointer;
+}
+
+
+/* ====================== Review Form ====================== */
+
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #666;
+  border-radius: 10px;
+  opacity: 0;
+  transition: all 0.3s;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+#modal.show {
+  opacity: 1;
+  display: flex;
+  z-index: 3;
+}
+
+#modal.show #review-form {
+  padding: 0 20px 20px 20px;
+}
+
+#modal-overlay {
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #000;
+  opacity: 0;
+  transition: all 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+#modal-overlay.show {
+  display: block;
+  opacity: 0.5;
+}
+
+#modal #close-btn {
+  align-self: flex-end;
+  font-size: 1.4em;
+  margin: 8px 8px 0;
+  padding: 0 8px;
+  cursor: pointer;
+}
+
+#modal input[type="radio"] {
+  box-shadow: none;
+}
+
+#modal button:hover {
+  border: none;
+  border-radius: none;
+  box-shadow: none;
+  background: #0a83c5;
+}
+
+#review-name,
+.rate,
+#review-content,
+button#close-btn,
+#submit-review-btn {
+  background: #f9f9f9;
+  border: 2px solid #e1e1e1e0;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 2px #e1e1e1e0;
+  font-size: 16px;
+  padding: 8px;
+}
+
+button#review-add-btn,
+button#close-btn,
+button#submit-review-btn {
+  min-width: 40px;
+  min-height: 40px;
+}
+
+button#submit-review-btn {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 16px;
+}
+
+.fieldset {
+  margin-top: 20px;
+}
+
+div#submit-btn {
+  align-self: flex-end;
+}
+
+#review-form-container {
+  width: 100%;
+  padding: 0 20px 26px;
+  color: #333;
+  overflow-y: auto;
+}
+
+#review-form-container h2 {
+  margin: 0 0 0 6px;
+}
+
+#review-form {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+
+#review-form label,
+#review-form input {
+  display: block;
+}
+
+#review-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#review-form .rate label,
+#review-form .rate input {
+  display: inline-block;
+}
+
+.rate {
+  height: 36px;
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+#review-form .rate > label {
+  margin-bottom: 0;
+  margin-top: -5px;
+  height: 30px;
+}
+
+.rate:not(:checked) > input {
+  margin-left: -24px;
+  width: 20px;
+  padding-right: 14px;
+  z-index: -10;
+}
+
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+
+.rate:not(:checked) > label::before {
+  content: "★ ";
+  position: relative;
+  top: -10px;
+  left: 2px;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+
+.rate > input:checked:focus + label {
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.rate > input:checked + label:hover {
+  color: #c59b08;
 }
