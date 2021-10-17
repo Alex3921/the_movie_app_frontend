@@ -12,7 +12,7 @@
       <form id="search-form">
         <input type="text" class="search" id="search" placeholder="Search" />
       </form>
-      <div id="modal">
+      <div id="modal" data-movie_id="">
         <button id="close-btn" title="Close">x</button>
         <div id="review-form-container">
           <h2 id="add-review-header">Add Review</h2>
@@ -54,7 +54,7 @@
       </div>
       <div id="modal-overlay"></div>
     </header>
-    
+
     <main id="main"></main>
 
     <script src="src/components/movie.js"></script>
@@ -62,7 +62,5 @@
     <script src="src/components/review.js"></script>
     <script src="src/services/reviewService.js"></script>
     <script src="index.js"></script>
-
-    
   </body>
 </html>
