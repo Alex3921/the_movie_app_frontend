@@ -1,48 +1,54 @@
 class Movie {
-  static imgPath = "https://image.tmdb.org/t/p/w1280";
+  static imgPath = "https://image.tmdb.org/t/p/w300";
 
-  constructor(title, overview, rating, poster, external_id) {
+  constructor({ id, title, overview, poster_path, vote_average, external_id }) {
+    this.id = id;
     this.title = title;
-    this.rating = rating;
-    this.poster = poster;
-    this.external_id = external_id;
-    this.service = new MovieService();
-    this.fetchAndRenderMovies();
+    this.overview = overview;
+    this.poster_path = poster_path;
+    this.vote_average = vote_average;
   }
 
-  fetchAndRenderMovies(query = "") {
-    if (query.length === 0) {
-      this.service.getMovies().then((movies) => {
-        this.showMovies(movies.results);
-      });
-    } else {
-      this.service.searchMovies(query).then((movies) => {
-        this.showMovies(movies.results);
-      });
-    }
-  }
-
-  showMovies(movies) {
+  static renderMovies(collection) {
     const main = document.getElementById("main");
     main.innerHTML = "";
 
-    movies.forEach((movie) => {
-      const { id, poster_path, title, vote_average, overview } = movie;
+    collection.forEach((m) => {
+      const movie = new this(m);
 
       const movieEl = document.createElement("div");
       movieEl.classList.add("movie-card");
 
-      movieEl.innerHTML = `  
-          <img
-            src="${Movie.imgPath + poster_path}" 
-            alt="${title}"
-            title="${title}"
-          />
-          <div class="options">
-          <button type="button" id="read-more" onclick="openModal()">Read more</button>
-          <button type="button" id="leave-review" onclick="openModal()">Leave review</button>
-          </div>
-        `;
+      const movieImg = document.createElement("img");
+      movieImg.src = `${Movie.imgPath + movie.poster_path}`;
+      movieImg.alt = `${movie.title}`;
+      movieImg.title = `${movie.title}`;
+
+      const movieOptions = document.createElement("div");
+      movieOptions.className = "options";
+
+      const readMoreBtn = document.createElement("button");
+      readMoreBtn.type = "button";
+      readMoreBtn.innerText = "Read more";
+      readMoreBtn.dataset.movie_id = `${movie.id}`;
+      readMoreBtn.addEventListener("click", openMovieDetails);
+
+      const leaveReviewBtn = document.createElement("button");
+      leaveReviewBtn.type = "button";
+      leaveReviewBtn.innerText = "Leave review";
+      leaveReviewBtn.dataset.movie_id = `${movie.id}`;
+      leaveReviewBtn.addEventListener("click", () => {
+        const reviewForm = document.getElementById("review-form");
+        reviewForm.dataset.movie_id = leaveReviewBtn.dataset.movie_id;
+        openModal();
+      });
+
+      movieOptions.appendChild(readMoreBtn);
+      movieOptions.appendChild(leaveReviewBtn);
+
+      movieEl.appendChild(movieImg);
+      movieEl.appendChild(movieOptions);
+
       main.appendChild(movieEl);
     });
   }
