@@ -22,7 +22,6 @@ main {
   flex-wrap: wrap;
 }
 
-
 /* ====================== Search Box ====================== */
 
 .search {
@@ -43,7 +42,6 @@ main {
   background-color: #22254b;
   outline: none;
 }
-
 
 /* ====================== Movie Card ====================== */
 
@@ -105,7 +103,6 @@ main {
   cursor: pointer;
 }
 
-
 /* ====================== Review Form ====================== */
 
 #modal {
@@ -113,19 +110,14 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 0;
-  display: flex;
+  display: none;
   flex-direction: column;
   border: 1px solid #666;
   border-radius: 10px;
-  opacity: 0;
-  transition: all 0.3s;
-  overflow: hidden;
   background-color: #eee;
 }
 
 #modal.show {
-  opacity: 1;
   display: flex;
   z-index: 3;
 }
