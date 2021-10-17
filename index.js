@@ -1,11 +1,7 @@
 const movieService = new MovieService();
+const reviewService = new ReviewService();
 movieService.fetchAll();
-const review = new Review();
 const searchForm = document.getElementById("search-form");
-let movieData;
-let reviewerName;
-let reviewRating;
-let reviewContent;
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -20,27 +16,27 @@ const modal = document.getElementById("modal");
 const modalOverlay = document.getElementById("modal-overlay");
 const reviewForm = document.getElementById("review-form");
 
-const openModal = () => {
-  document.getElementById("review-name").focus();
+function openModal() {
   modalOverlay.classList.add("show");
   modal.classList.add("show");
-  movieData = event.currentTarget.dataset;
+  document.getElementById("review-name").focus();
 
   const closeBtn = document.getElementById("close-btn");
   closeBtn.addEventListener("click", closeModal);
 
   modalOverlay.addEventListener("click", closeModal);
   reviewForm.addEventListener("submit", submitReview);
-};
+}
 
 const submitReview = (e) => {
   e.preventDefault();
 
-  reviewerName = document.getElementById("review-name");
-  reviewRating = getStarRating();
-  reviewContent = document.getElementById("review-content");
+  authorName = document.getElementById("review-name");
+  content = document.getElementById("review-content");
+  starRating = getStarRating();
+  movieID = e.currentTarget.dataset.movie_id;
 
-  console.log(reviewerName.value, reviewRating.value, reviewContent.value);
+  reviewService.createReview()
 
   closeModal();
 };
@@ -58,3 +54,7 @@ const getStarRating = () => {
   const selection = reviewRatingField.filter((e) => e.checked);
   return selection[0];
 };
+
+function openMovieDetails() {
+  debugger
+}
