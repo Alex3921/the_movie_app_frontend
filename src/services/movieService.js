@@ -16,6 +16,12 @@ class MovieService {
       .then((data) => Movie.renderMovies(data));
   }
 
+  async getMovie(movie_id) {
+    await fetch(this.baseUrl + "/" + movie_id)
+      .then((resp) => resp.json())
+      .then((data) => Movie.renderDetails(data));
+  }
+
   // createMovie(movieData) {
   //   const { title, overview, vote_average, poster_path, id } = movieData;
 
