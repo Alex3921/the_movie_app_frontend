@@ -287,3 +287,70 @@ div#submit-btn {
 .rate > input:checked + label:hover {
   color: #c59b08;
 }
+
+/* ====================== Details modal ====================== */
+
+#details-modal {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: column;
+  border: 1px solid #666;
+  border-radius: 10px;
+  background-color: #eee;
+  max-width: 600px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+  #details-modal {
+    min-width: 80%;
+  }
+
+}
+
+#details-modal.show {
+  display: flex;
+  z-index: 3;
+}
+
+#title-container {
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid rgb(126, 116, 116);
+  border-bottom-style: outset;
+}
+
+#title-container h3 {
+  margin: 0;
+}
+
+#title-container span {
+  background-color: #22254b;
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+}
+
+#title-container span.green {
+  color: green;
+}
+
+#title-container span.orange {
+  color: orange;
+}
+#title-container span.red {
+  color: red;
+}
+
+#movie-overview {
+  padding: 2rem;
+}
