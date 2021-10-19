@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -12,15 +13,9 @@
       <form id="search-form">
         <input type="text" class="search" id="search" placeholder="Search" />
       </form>
-      <div id="details-modal">
-        <div id="title-container">
-          <h3 id="movie-title"></h3>
-          <span id="movie-rating"></span>
-        </div>
-        <div id="movie-overview"></div>
-      </div>
+      <div id="details-modal"></div>
       <div id="modal" data-movie_id="">
-        <button id="close-btn" title="Close">x</button>
+        <button class="close-btn" title="Close">x</button>
         <div id="review-form-container">
           <h2 id="add-review-header">Add Review</h2>
           <form id="review-form">
