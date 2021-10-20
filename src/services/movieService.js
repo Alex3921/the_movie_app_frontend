@@ -21,37 +21,4 @@ class MovieService {
       .then((resp) => resp.json())
       .then((data) => Movie.renderDetails(data));
   }
-
-  // createMovie(movieData) {
-  //   const { title, overview, vote_average, poster_path, id } = movieData;
-
-  //   const movieInfo = {
-  //     movie: {
-  //       title: title,
-  //       overview: overview,
-  //       vote_average: vote_average,
-  //       poster_path: poster_path,
-  //       external_id: id,
-  //       reviews_attributes:
-  //         {
-  //           author_name: reviewerName.value,
-  //           content: reviewContent.value,
-  //           stars: reviewRating.value
-  //         }
-  //     },
-  //   };
-
-  //   const configObject = {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: JSON.stringify(movieInfo),
-  //   };
-
-  //   fetch(this.baseUrl, configObject)
-  //     .then((response) => response.json())
-  //     .then((data) => console.log(data));
-  // }
 }
