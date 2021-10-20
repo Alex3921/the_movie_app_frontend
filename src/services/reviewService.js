@@ -22,8 +22,10 @@ class ReviewService {
       body: JSON.stringify(reviewData),
     };
 
-    fetch(this.baseUrl, configObject)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    fetch(this.baseUrl, configObject);
+  }
+
+  deleteReview(id) {
+    fetch(`${this.baseUrl}/${id}`, { method: "DELETE" });
   }
 }
