@@ -1,6 +1,6 @@
 class ReviewService {
   constructor() {
-    this.baseUrl = "http://localhost:3000/api/v1/reviews";
+    this.baseUrl = "https://the-movie-app-backend.herokuapp.com/api/v1/reviews";
   }
 
   createReview() {
