@@ -1,7 +1,8 @@
 class MovieService {
   constructor() {
-    this.baseUrl = "http://localhost:3000/api/v1/movies";
-    this.searchUrl = "http://localhost:3000/api/v1/movies/search/";
+    this.baseUrl = "https://the-movie-app-backend.herokuapp.com/api/v1/movies";
+    this.searchUrl =
+      "https://the-movie-app-backend.herokuapp.com/api/v1/movies/search/";
   }
 
   async fetchAll() {
