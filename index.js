@@ -4,13 +4,14 @@ const searchForm = document.getElementById("search-form");
 
 movieService.fetchAll();
 
-searchForm.addEventListener("submit", (e) => {
+searchForm.addEventListener("input", (e) => {
   e.preventDefault();
 
   const search = document.getElementById("search");
   const searchTerm = search.value;
 
-  movieService.search(searchTerm);
+    movieService.search(searchTerm);
+
 });
 
 const reviewModal = document.getElementById("modal");
