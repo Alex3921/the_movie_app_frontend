@@ -10,7 +10,7 @@ searchForm.addEventListener("input", (e) => {
   const search = document.getElementById("search");
   const searchTerm = search.value;
 
-  if (!!searchTerm) {
+  if (!!searchTerm && searchTerm.length > 1) {
     movieService.search(searchTerm);
   } else {
     movieService.fetchAll();
