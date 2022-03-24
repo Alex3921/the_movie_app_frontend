@@ -10,8 +10,11 @@ searchForm.addEventListener("input", (e) => {
   const search = document.getElementById("search");
   const searchTerm = search.value;
 
+  if (!!searchTerm) {
     movieService.search(searchTerm);
-
+  } else {
+    movieService.fetchAll();
+  }
 });
 
 const reviewModal = document.getElementById("modal");
